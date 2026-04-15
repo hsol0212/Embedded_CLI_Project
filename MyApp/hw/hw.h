@@ -6,6 +6,8 @@
 #include "hw_def.h"
 #include "my_gpio.h"
 #include "button.h"
+//#include "cli.h"
+#include "temp.h"
 
 void hwInit(void);
 
