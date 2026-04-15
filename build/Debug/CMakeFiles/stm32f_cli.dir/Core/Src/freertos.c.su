@@ -1,0 +1,2 @@
+D:/stm_proj/stm32f_cli/Core/Src/freertos.c:72:6:MX_FREERTOS_Init	8	static
+D:/stm_proj/stm32f_cli/Core/Src/freertos.c:114:6:StartDefaultTask	16	static
