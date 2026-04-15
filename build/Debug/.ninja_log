@@ -50,3 +50,16 @@
 1862	2060	7979228677329087	cmake/stm32cubemx/CMakeFiles/FreeRTOS.dir/__/__/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj	5447dc34c2c354dd
 1858	2067	7979228677289099	cmake/stm32cubemx/CMakeFiles/FreeRTOS.dir/__/__/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj	8a30b9956969a080
 1846	2287	7979228677169106	cmake/stm32cubemx/CMakeFiles/FreeRTOS.dir/__/__/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj	64b037dc90932d0c
+4	256	7979317864326343	CMakeFiles/stm32f_cli.dir/MyApp/ap/ap.c.obj	f941078beeec2867
+19	262	7979318153443773	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/cli.c.obj	a505055b16583ea3
+262	479	7979318155872842	stm32f_cli.elf	e71e92082cf6bbc4
+4	248	7979336774385617	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/cli.c.obj	a505055b16583ea3
+248	1169	7979336776827160	stm32f_cli.elf	e71e92082cf6bbc4
+16	240	7979337067047240	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/cli.c.obj	a505055b16583ea3
+241	458	7979337069295377	stm32f_cli.elf	e71e92082cf6bbc4
+17	245	7979340361078701	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/cli.c.obj	a505055b16583ea3
+246	473	7979340363371446	stm32f_cli.elf	e71e92082cf6bbc4
+18	250	7979341293079607	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/cli.c.obj	a505055b16583ea3
+251	488	7979341295397073	stm32f_cli.elf	e71e92082cf6bbc4
+3	240	7979344112734386	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/cli.c.obj	a505055b16583ea3
+240	465	7979344115104329	stm32f_cli.elf	e71e92082cf6bbc4
