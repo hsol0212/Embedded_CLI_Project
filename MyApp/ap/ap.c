@@ -1,4 +1,6 @@
+#include "cmsis_os2.h"
 #include "hw_def.h"
+#include "led.h"
 #include "stm32f411xe.h"
 #include "stm32f4xx_hal.h"
 #include "uart.h"
@@ -163,6 +165,8 @@ void cliGpio(uint8_t argc, char **argv){
     }
 }
 
+
+
 void cliled(uint8_t argc, char **argv){
     if(argc == 2){
         if(strcmp(argv[1], "on") == 0){
@@ -185,6 +189,8 @@ void cliled(uint8_t argc, char **argv){
         cliPrintf("Usage: led[on|off|toggle]\r\n");
     }
 }
+
+
 
 void cliInfo(uint8_t argc, char **argv) {
 
@@ -236,25 +242,32 @@ void apInit(void){
     cliAdd("button", cliButton);
 }
 
-void apMain(void){
-    uartPrintf(0,"Hello World!\r\n");
+void ledSystemTask(void *argument)
+{
+    while(1){
+        ledToggle();
+        osDelay(1000);
+    }
+}
+
+
+
+void apMain(void)
+{
+    const osThreadAttr_t ledSystemTask_attributes = {
+    .name = "ledSystemTask",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t) osPriorityNormal,
+    };
+
+    osThreadNew(ledSystemTask, NULL, &ledSystemTask_attributes);
+
+
+    uartPrintf(0,"LED Task Started!\r\n");
 
     while(1){
 
         cliMain();
-
-        // if(uartAvailable(0) > 0){
-        //     uint8_t ch = uartRead(0);
-            
-        //     uartPrintf(0, "%c", ch);
-        // }
-
-        // ledOn();
-        // HAL_Delay(1000);
-        // ledOff();
-        // HAL_Delay(1000);
-
-        // uartWrite(0,(uint8_t *)"HELLOW", 7);
-        // uartPrintf(0,"hello world%d\r\n",10);
+        osDelay(1);
     }
 }
