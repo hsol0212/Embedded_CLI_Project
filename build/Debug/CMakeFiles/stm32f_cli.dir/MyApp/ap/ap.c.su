@@ -6,6 +6,8 @@ D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:131:6:cliGpio	40	static
 D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:171:6:cliled	16	static
 D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:212:6:cliInfo	32	static
 D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:243:6:cliSys	16	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:252:6:apInit	8	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:262:6:ledSystemTask	16	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:276:6:apMain	8	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:254:6:cliTemp	24	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:276:6:ledSystemTask	16	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:292:6:tempSystemTask	24	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:306:6:apInit	8	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:317:6:apMain	8	static
