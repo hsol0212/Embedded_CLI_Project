@@ -3,9 +3,9 @@ D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:19:6:cliButton	16	static
 D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:49:13:isSafeAddress	16	static
 D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:67:6:cliMd	56	static
 D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:131:6:cliGpio	40	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:170:6:cliled	16	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:195:6:cliInfo	32	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:226:6:cliSys	16	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:235:6:apInit	8	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:245:6:ledSystemTask	16	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:255:6:apMain	48	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:171:6:cliled	16	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:212:6:cliInfo	32	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:243:6:cliSys	16	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:252:6:apInit	8	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:262:6:ledSystemTask	16	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:276:6:apMain	8	static

@@ -166,30 +166,47 @@ void cliGpio(uint8_t argc, char **argv){
 }
 
 
+static uint32_t led_toggle_period = 0;
 
-void cliled(uint8_t argc, char **argv){
-    if(argc == 2){
+void cliled(uint8_t argc, char **argv)
+{
+    if(argc >= 2){
         if(strcmp(argv[1], "on") == 0){
+            led_toggle_period=0;
             ledOn();
             cliPrintf("LED ON\r\n");
         }
         else if(strcmp(argv[1], "off") == 0){
+            led_toggle_period=0;
             ledOff();
             cliPrintf("LED OFF\r\n");
         }
         else if(strcmp(argv[1], "toggle") == 0){
-            ledToggle();
-            cliPrintf("LED TOGGLE\r\n");
+            if(argc==3){
+                led_toggle_period=atoi(argv[2]);
+                if(led_toggle_period>0){
+                    cliPrintf("LED Auto-Toggle!!\r\n");
+
+                }else {
+                    cliPrintf("Invaild Period\r\n");
+                }
+            }
+            else{
+                led_toggle_period=0;
+                ledToggle();
+                cliPrintf("LED TOGGLE\r\n");
+            }
         }
         else{
             cliPrintf("Invaild Command\r\n");
         }
     }
     else{
-        cliPrintf("Usage: led[on|off|toggle]\r\n");
+        cliPrintf("Usage: led[on|off]\r\n");
+        cliPrintf("     : led toggle\r\n");
+        cliPrintf("     : led toggle [period]\r\n");
     }
 }
-
 
 
 void cliInfo(uint8_t argc, char **argv) {
@@ -245,8 +262,12 @@ void apInit(void){
 void ledSystemTask(void *argument)
 {
     while(1){
-        ledToggle();
-        osDelay(1000);
+        if(led_toggle_period > 0){
+            ledToggle();
+            osDelay(led_toggle_period);
+        }else{
+            osDelay(50);
+        }
     }
 }
 
@@ -254,15 +275,6 @@ void ledSystemTask(void *argument)
 
 void apMain(void)
 {
-    const osThreadAttr_t ledSystemTask_attributes = {
-    .name = "ledSystemTask",
-    .stack_size = 128 * 4,
-    .priority = (osPriority_t) osPriorityNormal,
-    };
-
-    osThreadNew(ledSystemTask, NULL, &ledSystemTask_attributes);
-
-
     uartPrintf(0,"LED Task Started!\r\n");
 
     while(1){
