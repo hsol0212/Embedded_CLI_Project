@@ -1,0 +1,8 @@
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/cli.c:38:13:cliHelp	24	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/cli.c:47:13:cliClear	16	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/cli.c:52:6:cliInit	8	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/cli.c:61:6:cliPrintf	144	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/cli.c:74:6:cliParseArgs	24	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/cli.c:84:6:cliRunCommand	16	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/cli.c:101:6:cliAdd	24	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/cli.c:115:6:cliMain	24	static

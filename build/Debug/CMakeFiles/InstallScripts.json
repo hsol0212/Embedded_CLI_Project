@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/stm_proj/stm32f_cli/build/Debug/cmake_install.cmake",
+		"D:/stm_proj/stm32f_cli/build/Debug/cmake/stm32cubemx/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

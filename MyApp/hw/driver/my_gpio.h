@@ -1,0 +1,15 @@
+#ifndef _HW_DRIVER_MY_GPIO_H
+#define _HW_DRIVER_MY_GPIO_H        
+# include "hw_def.h"
+#include <stdint.h>
+
+// port nmber : 0=A, 1=B ....7=H
+bool gpioExtWrite(uint8_t port_idx, uint8_t pin_num, uint8_t state);
+int8_t gpioExtRead(uint8_t port_idx, uint8_t pin_num);
+
+
+
+
+
+
+#endif
