@@ -1,8 +1,9 @@
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:20:6:uartInit	16	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:27:6:HAL_UART_RxCpltCallback	16	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:38:10:uartAvailable	24	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:51:9:uartRead	24	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:62:6:uartOpen	16	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:79:6:uartClose	16	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:83:10:uartWrite	24	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:91:10:uartPrintf	156	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:30:6:uartInit	16	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:42:6:HAL_UART_RxCpltCallback	16	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:53:10:uartAvailable	16	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:60:9:uartRead	24	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:68:6:uartReadBlock	24	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:77:6:uartOpen	16	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:94:6:uartClose	16	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:98:10:uartWrite	24	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/uart.c:106:10:uartPrintf	156	static

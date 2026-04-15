@@ -1,4 +1,5 @@
 #include "cli.h"
+#include "cmsis_os.h"
 #include "uart.h"
 #include <stdint.h>
 #include <string.h>
@@ -131,33 +132,35 @@ static void processAnsiEscape(uint8_t rx_data){
 
 void cliMain(void)
 {
-    if(uartAvailable(0)== 0) return;
-
-    uint8_t rx_data=uartRead(0);
-
-    if(input_state!=CLI_STATE_NORMAL){
+    uint8_t rx_data;
+    if(uartReadBlock(0, &rx_data, osWaitForever) == true)
+    {
+        if(input_state != CLI_STATE_NORMAL)
+        {
         processAnsiEscape(rx_data);
         return;
-    }
-    switch (rx_data) {
-        case 0x1B:  // ESC 키 입력 시
-            input_state=CLI_STATE_ESC_RCVD;
-            break;
-        case '\r':  // 엔터 키  :   
-        case '\n':  // 엔터 키  :  
-            handleEnterKey();
-            break;
-        case '\b':  // 백스페이스 키
-        case 127:   // 백스페이스 키
-            handleBackspace();
-            break;
-        default:
-        if(32 <= rx_data && rx_data <= 126)
-        {
-            handleCharInsert(rx_data);
-            break;
         }
     }
+    switch (rx_data) {
+            case 0x1B:  // ESC 키 입력 시
+                input_state=CLI_STATE_ESC_RCVD;
+                break;
+            case '\r':  // 엔터 키  :   
+            case '\n':  // 엔터 키  :  
+                handleEnterKey();
+                break;
+            case '\b':  // 백스페이스 키
+            case 127:   // 백스페이스 키
+                handleBackspace();
+                break;
+            default:
+            if(32 <= rx_data && rx_data <= 126)
+            {
+                handleCharInsert(rx_data);
+                break;
+            }
+    }
+    
 }
 
 static void cliHelp (uint8_t argc, char* argv[]){
@@ -174,6 +177,9 @@ static void cliClear (uint8_t argc, char* argv[]){
     cliPrintf("\x1B[2J\x1B[H");
 }
 
+
+
+    
 void cliInit() 
 {
   cli_cmd_count = 0;
