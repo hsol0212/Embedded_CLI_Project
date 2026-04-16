@@ -1,3 +1,4 @@
+#include "ap.h"
 #include "cmsis_os2.h"
 #include "hw_def.h"
 #include "led.h"
@@ -288,6 +289,17 @@ void ledSystemTask(void *argument)
         }
     }
 }
+
+void StartDefaultTask(void *argument)
+{
+    apInit();
+    for(;;)
+    {
+        apMain();
+    }
+}   
+
+
 
 void tempSystemTask(void *argument)
 {
