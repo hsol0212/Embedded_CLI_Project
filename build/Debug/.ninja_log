@@ -157,3 +157,10 @@
 270	966	7980080290564904	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/led.c.obj	22bee99d02861214
 281	971	7980080290664884	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/uart.c.obj	daea6ad2a755cdfe
 971	1218	7980080297571072	stm32f_cli.elf	31382a61fe5cc89d
+11	351	7980092156432037	CMakeFiles/stm32f_cli.dir/MyApp/hw/hw.c.obj	aded3a309e32a9dd
+21	269	7980092594168013	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/temp.c.obj	701c5befbb29b149
+22	280	7980094750157371	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/temp.c.obj	701c5befbb29b149
+18	301	7980094750116685	CMakeFiles/stm32f_cli.dir/MyApp/ap/ap.c.obj	f941078beeec2867
+301	1280	7980094752952576	stm32f_cli.elf	31382a61fe5cc89d
+17	308	7980095294765635	CMakeFiles/stm32f_cli.dir/MyApp/hw/driver/temp.c.obj	701c5befbb29b149
+309	563	7980095297684631	stm32f_cli.elf	31382a61fe5cc89d
