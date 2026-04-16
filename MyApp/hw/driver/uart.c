@@ -4,15 +4,19 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include "cmsis_os.h"
 #include "hw_def.h"
 
 extern UART_HandleTypeDef huart2;
 
-static osMessageQueueId_t uart_rx_q=NULL;
+static osMessageQueueId_t uart_rx_q = NULL;
+static osMutexId_t uart_tx_mutex = NULL;
 
-#define TIMEOUT 100
+
+
+#define TIMEOUT 200
 
 #define UART_RX_BUF_LENGTH 256
 
@@ -25,8 +29,13 @@ bool uartInit(void)
    if(uart_rx_q == NULL){
       uart_rx_q = osMessageQueueNew(UART_RX_BUF_LENGTH, sizeof(uint8_t), NULL);
    }
-      bool ret = uartOpen(0, 9600);
-      HAL_UART_Receive_IT(&huart2,&rx_data, 1);
+   
+   if(uart_tx_mutex == NULL){
+      uart_tx_mutex = osMutexNew(NULL);
+   }
+
+   bool ret = uartOpen(0, 9600);
+   HAL_UART_Receive_IT(&huart2,&rx_data, 1);
 
       return ret;
 }
@@ -87,16 +96,24 @@ bool uartClose(uint8_t ch){
     return true;
 }
 
-uint32_t uartWrite(uint8_t ch, uint8_t *p_data, uint32_t len){
+uint32_t uartWrite(uint8_t ch, uint8_t *p_data, uint32_t len)
+{
+   if(uart_tx_mutex==NULL) return 0;
 
-    if(HAL_UART_Transmit(&huart2, p_data, len, TIMEOUT) == HAL_OK)
-       return len;
+   osMutexAcquire(uart_tx_mutex, osWaitForever);
 
-    return 0;
+   if(HAL_UART_Transmit(&huart2, p_data, len, TIMEOUT) == HAL_OK)
+   {
+      
+   }else{
+      len=0;
+   } 
+   osMutexRelease(uart_tx_mutex); 
+   return len;
 }
 
-uint32_t uartPrintf(uint8_t ch, const char *fmt, ...){
-
+uint32_t uartPrintf(uint8_t ch, const char *fmt, ...)
+{
    char buf[128];
    uint32_t len;
    va_list args;
