@@ -7,8 +7,8 @@ D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:154:6:cliled	16	static
 D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:195:6:cliInfo	32	static
 D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:226:6:cliSys	16	static
 D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:237:6:cliTemp	24	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:259:6:ledSystemTask	16	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:275:6:StartDefaultTask	16	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:284:6:tempSystemTask	24	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:298:6:apInit	8	static
-D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:309:6:apMain	8	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:267:6:ledSystemTask	16	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:283:6:StartDefaultTask	16	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:292:6:tempSystemTask	24	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:306:6:apInit	8	static
+D:/stm_proj/stm32f_cli/MyApp/ap/ap.c:317:6:apMain	8	static
