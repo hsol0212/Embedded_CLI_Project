@@ -1,20 +1,4 @@
 #include "ap.h"
-#include "cmsis_os2.h"
-#include "hw_def.h"
-#include "led.h"
-#include "stm32f411xe.h"
-#include "stm32f4xx_hal.h"
-#include "uart.h"
-#include "cli.h"
-#include "hw.h"
-#include "bsp.h"
-#include "main.h"
-#include "my_gpio.h"
-#include <ctype.h>
-#include <stdint.h>
-#include <string.h>
-#include <stdlib.h>
-#include <sys/_intsup.h>
 
 //button enable/disable = on/off
 void cliButton(uint8_t argc, char **argv)
@@ -43,8 +27,6 @@ void cliButton(uint8_t argc, char **argv)
         cliPrintf("Usage: button [on|off]\r\n");
     }
 }
-
-
 
 
 static bool isSafeAddress(uint32_t addr){
@@ -298,8 +280,6 @@ void StartDefaultTask(void *argument)
         apMain();
     }
 }   
-
-
 
 void tempSystemTask(void *argument)
 {

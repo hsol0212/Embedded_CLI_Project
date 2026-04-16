@@ -16,9 +16,6 @@ static osMessageQueueId_t uart_rx_q=NULL;
 
 #define UART_RX_BUF_LENGTH 256
 
-static uint8_t rx_buf[UART_RX_BUF_LENGTH];
-static uint32_t rx_buf_head = 0; // static 이니까 굳이 초기화 안해도되는데 혹시몰라
-static uint32_t rx_buf_tail = 0;
 static uint8_t rx_data; // 실제 받을데이터
 
 

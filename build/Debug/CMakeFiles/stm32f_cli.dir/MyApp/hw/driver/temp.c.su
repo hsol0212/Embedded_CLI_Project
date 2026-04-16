@@ -1,2 +1,2 @@
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:6:6:tempInit	4	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:10:7:tempRead	24	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:8:6:tempInit	8	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:13:7:tempRead	24	static

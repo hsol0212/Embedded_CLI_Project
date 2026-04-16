@@ -2,7 +2,6 @@
 #define __HW_DRIVER_UART_H_
 
 #include "hw_def.h"
-#include <stdint.h>
 
 bool uartInit(void);
 bool uartOpen(uint8_t ch, uint32_t baudrate);
