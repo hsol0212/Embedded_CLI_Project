@@ -1,4 +1,5 @@
-D:/stm_proj/stm32f_cli/Core/Src/freertos.c:88:6:MX_FREERTOS_Init	8	static
-D:/stm_proj/stm32f_cli/Core/Src/freertos.c:136:13:StartDefaultTask	16	static
-D:/stm_proj/stm32f_cli/Core/Src/freertos.c:155:13:ledSystemTask	16	static
-D:/stm_proj/stm32f_cli/Core/Src/freertos.c:173:13:tempSystemTask	16	static
+D:/stm_proj/stm32f_cli/Core/Src/freertos.c:147:13:StartDefaultTask	8	static
+D:/stm_proj/stm32f_cli/Core/Src/freertos.c:166:13:ledSystemTask	8	static
+D:/stm_proj/stm32f_cli/Core/Src/freertos.c:184:13:tempSystemTask	8	static
+D:/stm_proj/stm32f_cli/Core/Src/freertos.c:202:13:monitorSystemTask	8	static
+D:/stm_proj/stm32f_cli/Core/Src/freertos.c:96:6:MX_FREERTOS_Init	8	static

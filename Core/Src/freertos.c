@@ -51,20 +51,27 @@
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 2048 * 4,
+  .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-/* Definitions for myTask02 */
-osThreadId_t myTask02Handle;
-const osThreadAttr_t myTask02_attributes = {
-  .name = "myTask02",
+/* Definitions for myTaskLed */
+osThreadId_t myTaskLedHandle;
+const osThreadAttr_t myTaskLed_attributes = {
+  .name = "myTaskLed",
   .stack_size = 256 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
-/* Definitions for myTask03 */
-osThreadId_t myTask03Handle;
-const osThreadAttr_t myTask03_attributes = {
-  .name = "myTask03",
+/* Definitions for myTask0Temp */
+osThreadId_t myTask0TempHandle;
+const osThreadAttr_t myTask0Temp_attributes = {
+  .name = "myTask0Temp",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
+/* Definitions for myTaskMonitor */
+osThreadId_t myTaskMonitorHandle;
+const osThreadAttr_t myTaskMonitor_attributes = {
+  .name = "myTaskMonitor",
   .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
@@ -77,6 +84,7 @@ const osThreadAttr_t myTask03_attributes = {
 void StartDefaultTask(void *argument);
 void ledSystemTask(void *argument);
 void tempSystemTask(void *argument);
+void monitorSystemTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -110,11 +118,14 @@ void MX_FREERTOS_Init(void) {
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
-  /* creation of myTask02 */
-  myTask02Handle = osThreadNew(ledSystemTask, NULL, &myTask02_attributes);
+  /* creation of myTaskLed */
+  myTaskLedHandle = osThreadNew(ledSystemTask, NULL, &myTaskLed_attributes);
 
-  /* creation of myTask03 */
-  myTask03Handle = osThreadNew(tempSystemTask, NULL, &myTask03_attributes);
+  /* creation of myTask0Temp */
+  myTask0TempHandle = osThreadNew(tempSystemTask, NULL, &myTask0Temp_attributes);
+
+  /* creation of myTaskMonitor */
+  myTaskMonitorHandle = osThreadNew(monitorSystemTask, NULL, &myTaskMonitor_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -179,6 +190,24 @@ __weak void tempSystemTask(void *argument)
     osDelay(1);
   }
   /* USER CODE END tempSystemTask */
+}
+
+/* USER CODE BEGIN Header_monitorSystemTask */
+/**
+* @brief Function implementing the myTaskMonitor thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_monitorSystemTask */
+__weak void monitorSystemTask(void *argument)
+{
+  /* USER CODE BEGIN monitorSystemTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END monitorSystemTask */
 }
 
 /* Private application code --------------------------------------------------*/

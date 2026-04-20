@@ -1,11 +1,5 @@
 #include "cli.h"
-#include "cmsis_os.h"
-#include "uart.h"
-#include <stdint.h>
-#include <string.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <sys/_intsup.h>
+#include "ap.h"
 
 #define CLI_LINE_BUF_MAX 32
 #define CLI_CMD_LIST_MAX 32
@@ -15,7 +9,6 @@ typedef struct _cli_cmd_t{
     char cmd_str[16];
     void (*cmd_func)(uint8_t argc, char **argv);
 }cli_cmd_t;
-
 
 static cli_cmd_t cli_cmd_list[CLI_CMD_LIST_MAX];
 static uint8_t cli_cmd_count=0;
@@ -39,6 +32,7 @@ typedef enum{
 }cli_input_state_t;
 
 static cli_input_state_t input_state=CLI_STATE_NORMAL;
+static cli_callback_t ctrl_c_handler=NULL;
 
 //Refactoring CLI function
 // static void cliRedrawTail(void){
@@ -141,20 +135,26 @@ void cliMain(void)
         return;
         }
     }
-    switch (rx_data) {
-            case 0x1B:  // ESC 키 입력 시
-                input_state=CLI_STATE_ESC_RCVD;
+    switch (rx_data) 
+    {   
+        case 0x03: 
+            if(ctrl_c_handler!=NULL) ctrl_c_handler();
+            cliPrintf("^C \r\nCLI> ");
+            cli_line_idx = 0;
+            break;    
+        case 0x1B:  // ESC 키 입력 시
+            input_state=CLI_STATE_ESC_RCVD;
+            break;
+        case '\r':  // 엔터 키  :   
+        case '\n':  // 엔터 키  :  
+            handleEnterKey();
                 break;
-            case '\r':  // 엔터 키  :   
-            case '\n':  // 엔터 키  :  
-                handleEnterKey();
-                break;
-            case '\b':  // 백스페이스 키
-            case 127:   // 백스페이스 키
+        case '\b':  // 백스페이스 키
+        case 127:   // 백스페이스 키
                 handleBackspace();
                 break;
-            default:
-            if(32 <= rx_data && rx_data <= 126)
+        default:
+        if(32 <= rx_data && rx_data <= 126)
             {
                 handleCharInsert(rx_data);
                 break;
@@ -177,17 +177,22 @@ static void cliClear (uint8_t argc, char* argv[]){
     cliPrintf("\x1B[2J\x1B[H");
 }
 
-
-
-    
 void cliInit() 
 {
-  cli_cmd_count = 0;
-  cli_line_idx = 0;
+    ctrl_c_handler = NULL;
 
-  cliAdd("help", cliHelp);
-  cliAdd("cls", cliClear);
+    cli_cmd_count = 0;
+    cli_line_idx = 0;
+
+    cliAdd("help", cliHelp);
+    cliAdd("cls", cliClear);
+    cliAdd("log", cliLog);
 }
+
+void cliSetCtrlHandler(cli_callback_t handler){
+    ctrl_c_handler=handler;
+}
+
 
 void cliPrintf(const char *fmt, ...)
 {
@@ -225,7 +230,8 @@ void cliRunCommand(){
         }
     }
 
-    if(is_found==false){
+    if(is_found==false)
+    {
         cliPrintf("Command Not Found \r\n");
     }
 }

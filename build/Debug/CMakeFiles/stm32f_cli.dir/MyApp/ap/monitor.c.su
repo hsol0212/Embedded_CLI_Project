@@ -1,0 +1,9 @@
+D:/stm_proj/stm32f_cli/MyApp/ap/monitor.c:53:6:monitorInit	8	static
+D:/stm_proj/stm32f_cli/MyApp/ap/monitor.c:62:6:isMonitoringOn	0	static
+D:/stm_proj/stm32f_cli/MyApp/ap/monitor.c:66:6:monitoroff	0	static
+D:/stm_proj/stm32f_cli/MyApp/ap/monitor.c:71:6:monitorSetPeriod	8	static
+D:/stm_proj/stm32f_cli/MyApp/ap/monitor.c:24:13:climonitor	32	static
+D:/stm_proj/stm32f_cli/MyApp/ap/monitor.c:79:10:monitorGetPeriod	0	static
+D:/stm_proj/stm32f_cli/MyApp/ap/monitor.c:83:6:monitorSetSyncHandler	0	static
+D:/stm_proj/stm32f_cli/MyApp/ap/monitor.c:88:6:monitorUpdateValue	24	static
+D:/stm_proj/stm32f_cli/MyApp/ap/monitor.c:127:6:monitorSendPacket	296	static

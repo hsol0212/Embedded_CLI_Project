@@ -1,5 +1,5 @@
 #include "button.h"
-#include "cli.h"
+#include "log.h"
 
 static bool is_enable=false;
 
@@ -24,6 +24,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
     if(GPIO_Pin==GPIO_PIN_13)
     {
-        cliPrintf("\r\n [BUTTON] B1 pressed \r\n");
+        // cliPrintf("\r\n [BUTTON] B1 pressed \r\n");
+        LOG_INF("[BUTTON] B1 pressed");
     }
 }

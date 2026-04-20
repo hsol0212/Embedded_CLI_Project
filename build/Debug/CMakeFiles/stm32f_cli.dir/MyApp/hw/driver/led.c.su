@@ -1,4 +1,5 @@
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/led.c:3:6:ledInit	4	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/led.c:6:6:ledOn	8	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/led.c:10:6:ledOff	8	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/led.c:14:6:ledToggle	8	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/led.c:5:6:ledInit	0	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/led.c:8:6:ledOn	8	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/led.c:12:6:ledOff	8	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/led.c:16:6:ledToggle	8	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/led.c:20:6:ledGetStatus	8	static

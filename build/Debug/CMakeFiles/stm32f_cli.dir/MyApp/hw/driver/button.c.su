@@ -1,4 +1,4 @@
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/button.c:6:6:buttonInit	4	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/button.c:11:6:buttonEnable	16	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/button.c:16:6:buttonGetEnable	4	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/button.c:6:6:buttonInit	0	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/button.c:11:6:buttonEnable	0	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/button.c:16:6:buttonGetEnable	0	static
 D:/stm_proj/stm32f_cli/MyApp/hw/driver/button.c:21:6:HAL_GPIO_EXTI_Callback	16	static

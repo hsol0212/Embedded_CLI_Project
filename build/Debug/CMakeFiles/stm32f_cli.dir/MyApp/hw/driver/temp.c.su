@@ -1,5 +1,5 @@
 D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:6:6:tempInit	8	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:11:7:tempReadAuto	24	static
-D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:20:7:tempReadSingle	24	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:11:7:tempReadAuto	0	static
 D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:32:6:tempStartAuto	8	static
 D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:36:6:tempStopAuto	8	static
+D:/stm_proj/stm32f_cli/MyApp/hw/driver/temp.c:20:7:tempReadSingle	8	static

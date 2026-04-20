@@ -1,4 +1,10 @@
 #include "ap.h"
+#include "hw.h"
+#include "led.h"
+#include "log.h"
+#include "monitor.h"
+#include "temp.h"
+
 
 //button enable/disable = on/off
 void cliButton(uint8_t argc, char **argv)
@@ -157,31 +163,31 @@ void cliled(uint8_t argc, char **argv)
         if(strcmp(argv[1], "on") == 0){
             led_toggle_period=0;
             ledOn();
-            cliPrintf("LED ON\r\n");
+            LOG_INF("LED ON");
         }
         else if(strcmp(argv[1], "off") == 0){
             led_toggle_period=0;
             ledOff();
-            cliPrintf("LED OFF\r\n");
+            LOG_INF("LED OFF");
         }
         else if(strcmp(argv[1], "toggle") == 0){
             if(argc==3){
                 led_toggle_period=atoi(argv[2]);
                 if(led_toggle_period>0){
-                    cliPrintf("LED Auto-Toggle!!\r\n");
+                    LOG_INF("LED Auto-Toggle!!");
 
                 }else {
-                    cliPrintf("Invaild Period\r\n");
+                    LOG_INF("Invaild Period");
                 }
             }
             else{
                 led_toggle_period=0;
                 ledToggle();
-                cliPrintf("LED TOGGLE\r\n");
+                LOG_INF("LED TOGGLE");
             }
         }
         else{
-            cliPrintf("Invaild Command\r\n");
+            LOG_WRN("Invaild Command");
         }
     }
     else{
@@ -264,17 +270,30 @@ void cliTemp(uint8_t argc, char **argv)
 }
 
 
+
+
 void ledSystemTask(void *argument)
 {
     while(1)
     {
-        if (led_toggle_period > 0)
-        {
+        if (led_toggle_period > 0){   
+            
             ledToggle();                // LED 상태 반전
+            bool led_state=ledGetStatus();
+                
+            if(isMonitoringOn()){
+                monitorUpdateValue(ID_OUT_LED_STATE, TYPE_BOOL, &led_state);
+            }else{
+                LOG_DBG("LED Toggle!!");
+            }
+            
+
             osDelay(led_toggle_period); // 설정된 주기만큼 대기
-        }
-        else
-        {
+        }else{
+            bool led_state=ledGetStatus();
+            if(isMonitoringOn()){
+                monitorUpdateValue(ID_OUT_LED_STATE, TYPE_BOOL, &led_state);
+            }
             osDelay(50); 
         }
     }
@@ -294,7 +313,13 @@ void tempSystemTask(void *argument)
     while(1){
         if(temp_read_period > 0){
             float t=tempReadAuto();
-            cliPrintf("Current Temp: %.2f *C\r\n", t);
+            
+            if(isMonitoringOn()){
+                monitorUpdateValue(ID_ENV_TEMP, TYPE_FLOAT, &t);  
+            }else{
+                cliPrintf("Current Temp: %.2f *C\r\n", t);
+            }
+            
             osDelay(temp_read_period);
         
         }else{
@@ -303,8 +328,55 @@ void tempSystemTask(void *argument)
     }
 }
 
-void apInit(void){
+
+void monitorSystemTask(void *argument) {
+    while(1) {
+        if(isMonitoringOn()) {
+            monitorSendPacket();
+            // 설정된 모니터 주기에 맞춰 대기
+            osDelay(monitorGetPeriod());
+        } else {
+            osDelay(100); // 꺼져있을 땐 적당히 쉬기
+        }
+    }
+}
+
+
+void apMonitorSync(uint32_t period) {
+    //if (isMonitoringOn()) {
+    if( period > 0){
+        tempStopAuto();
+        led_toggle_period = period;
+        temp_read_period = period;
+        LOG_INF("All Tasks Synced to %d ms", period);
+    }else{
+        temp_read_period = 0;
+        led_toggle_period = 0;
+    }
+}
+
+
+void apStopAutoTask(void){
+    led_toggle_period=0;
+    temp_read_period=0;
+    tempStopAuto();
+
+    ledOff();
+}
+
+void apInit(void)
+{   
+    
     hwInit();
+    LOG_INF("Application Init... Started");
+    logInit();
+    monitorInit();
+
+    monitorSetSyncHandler(apMonitorSync);
+
+    cliSetCtrlHandler(apStopAutoTask);
+
+
     cliAdd("led", cliled);
     cliAdd("info", cliInfo);
     cliAdd("sys", cliSys);
